@@ -1,0 +1,191 @@
+{
+  "@context" : {
+    "Verified" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Verified"
+    },
+    "Review" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Review"
+    },
+    "origin" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#origin",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "recomended" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#recomended",
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "First_Class" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#First_Class"
+    },
+    "Country" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Country"
+    },
+    "Comment" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Comment"
+    },
+    "seatType" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#seatType",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "hasAircraft" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasAircraft",
+      "@type" : "@id"
+    },
+    "destination" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#destination",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Couple_Leisure" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Couple_Leisure"
+    },
+    "Recommended" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Recommended"
+    },
+    "topDataProperty" : {
+      "@id" : "http://www.w3.org/2002/07/owl#topDataProperty"
+    },
+    "Comment_Title" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Comment_Title"
+    },
+    "Economy_Class" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Economy_Class"
+    },
+    "Aircraft_Data" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft_Data"
+    },
+    "Traveller_Type" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Traveller_Type"
+    },
+    "label" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "Business_Class" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Business_Class"
+    },
+    "commentTitle" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#commentTitle",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "hasPassengerReview" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasPassengerReview",
+      "@type" : "@id"
+    },
+    "Destination" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Destination"
+    },
+    "Solo_Leisure" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Solo_Leisure"
+    },
+    "Seat_Type" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Seat_Type"
+    },
+    "Date_Flown" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Date_Flown"
+    },
+    "Business" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Business"
+    },
+    "Very_Bad_Flight" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Very_Bad_Flight"
+    },
+    "airline" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#airline",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Very_Good_Flight" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Very_Good_Flight"
+    },
+    "topObjectProperty" : {
+      "@id" : "http://www.w3.org/2002/07/owl#topObjectProperty",
+      "@type" : "@id"
+    },
+    "verified" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#verified",
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "Flight_Data" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_Data"
+    },
+    "Passenger" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Passenger"
+    },
+    "Qatar_Airways" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Qatar_Airways"
+    },
+    "hasFlightData" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasFlightData",
+      "@type" : "@id"
+    },
+    "Aircraft" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft"
+    },
+    "Ryanair" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Ryanair"
+    },
+    "datePublished" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#datePublished",
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "Airline" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Airline"
+    },
+    "vip" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#vip"
+    },
+    "Family_Leisure" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Family_Leisure"
+    },
+    "passengerCountry" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#passengerCountry",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "reliable" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#reliable",
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "Overal_Rating" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Overal_Rating"
+    },
+    "commentContent" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#commentContent",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "Flight_Review" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_Review"
+    },
+    "sameAs" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#sameAs"
+    },
+    "comment" : {
+      "@id" : "http://www.w3.org/2000/01/rdf-schema#comment"
+    },
+    "Data_Plublished" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Data_Plublished"
+    },
+    "rating" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#rating"
+    },
+    "Origing" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Origing"
+    },
+    "aircraftType" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#aircraftType",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "travellerType" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#travellerType",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "hasPassenger" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasPassenger",
+      "@type" : "@id"
+    },
+    "dateFlown" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#dateFlown",
+      "@type" : "http://www.w3.org/2001/XMLSchema#string"
+    },
+    "worker" : {
+      "@id" : "http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#worker"
+    }
+  }
+}
