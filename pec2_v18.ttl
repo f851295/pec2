@@ -1,0 +1,744 @@
+@prefix : <http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix flight_reviews: <http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#> .
+@base <http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews/> .
+
+<http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2000/01/rdf-schema#sameAs
+rdfs:sameAs rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasAircraft
+flight_reviews:hasAircraft rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf owl:topObjectProperty ;
+                           rdf:type owl:FunctionalProperty ;
+                           rdfs:domain flight_reviews:Aircraft_Data ;
+                           rdfs:range flight_reviews:Aircraft ,
+                                      flight_reviews:Airline .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasFlightData
+flight_reviews:hasFlightData rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf owl:topObjectProperty ;
+                             rdf:type owl:FunctionalProperty ;
+                             rdfs:domain flight_reviews:Flight_Data ;
+                             rdfs:range flight_reviews:Date_Flown ,
+                                        flight_reviews:Destination ,
+                                        flight_reviews:Origing .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasPassenger
+flight_reviews:hasPassenger rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf owl:topObjectProperty ;
+                            rdf:type owl:FunctionalProperty ;
+                            rdfs:domain flight_reviews:Passenger ;
+                            rdfs:range flight_reviews:Country ,
+                                       flight_reviews:Seat_Type ,
+                                       flight_reviews:Traveller_Type .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#hasPassengerReview
+flight_reviews:hasPassengerReview rdf:type owl:ObjectProperty ,
+                                           owl:FunctionalProperty ;
+                                  rdfs:domain flight_reviews:Review ;
+                                  rdfs:range flight_reviews:Comment ,
+                                             flight_reviews:Comment_Title ,
+                                             flight_reviews:Data_Plublished ,
+                                             flight_reviews:Overal_Rating ,
+                                             flight_reviews:Recommended ,
+                                             flight_reviews:Verified .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#aircraftType
+flight_reviews:aircraftType rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf owl:topDataProperty ;
+                            rdfs:domain flight_reviews:Aircraft ,
+                                        flight_reviews:Aircraft_Data ;
+                            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#airline
+flight_reviews:airline rdf:type owl:DatatypeProperty ,
+                                owl:FunctionalProperty ;
+                       rdfs:domain flight_reviews:Aircraft_Data ,
+                                   flight_reviews:Airline ,
+                                   flight_reviews:Qatar_Airways ,
+                                   flight_reviews:Ryanair ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#commentContent
+flight_reviews:commentContent rdf:type owl:DatatypeProperty ;
+                              rdfs:domain flight_reviews:Comment ,
+                                          flight_reviews:Review ;
+                              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#commentTitle
+flight_reviews:commentTitle rdf:type owl:DatatypeProperty ;
+                            rdfs:domain flight_reviews:Comment_Title ,
+                                        flight_reviews:Review ;
+                            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#dateFlown
+flight_reviews:dateFlown rdf:type owl:DatatypeProperty ;
+                         rdfs:domain flight_reviews:Date_Flown ;
+                         rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#datePublished
+flight_reviews:datePublished rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf owl:topDataProperty ;
+                             rdfs:domain flight_reviews:Data_Plublished ,
+                                         flight_reviews:Review ;
+                             rdfs:range xsd:dateTime .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#destination
+flight_reviews:destination rdf:type owl:DatatypeProperty ;
+                           rdfs:domain flight_reviews:Destination ;
+                           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#origin
+flight_reviews:origin rdf:type owl:DatatypeProperty ;
+                      rdfs:domain flight_reviews:Origing ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#passengerCountry
+flight_reviews:passengerCountry rdf:type owl:DatatypeProperty ;
+                                rdfs:domain flight_reviews:Country ;
+                                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#rating
+flight_reviews:rating rdf:type owl:DatatypeProperty ;
+                      rdfs:domain flight_reviews:Overal_Rating ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty flight_reviews:rating ;
+                                    owl:minQualifiedCardinality "8"^^xsd:nonNegativeInteger ;
+                                    owl:onDataRange xsd:int
+                                  ] .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#recomended
+flight_reviews:recomended rdf:type owl:DatatypeProperty ;
+                          rdfs:domain flight_reviews:Recommended ,
+                                      flight_reviews:Review ;
+                          rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#reliable
+flight_reviews:reliable rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#seatType
+flight_reviews:seatType rdf:type owl:DatatypeProperty ;
+                        rdfs:domain flight_reviews:Business_Class ,
+                                    flight_reviews:Economy_Class ,
+                                    flight_reviews:First_Class ,
+                                    flight_reviews:Passenger ,
+                                    flight_reviews:Seat_Type ;
+                        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#travellerType
+flight_reviews:travellerType rdf:type owl:DatatypeProperty ;
+                             rdfs:domain flight_reviews:Business ,
+                                         flight_reviews:Couple_Leisure ,
+                                         flight_reviews:Family_Leisure ,
+                                         flight_reviews:Passenger ,
+                                         flight_reviews:Solo_Leisure ,
+                                         flight_reviews:Traveller_Type ;
+                             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#verified
+flight_reviews:verified rdf:type owl:DatatypeProperty ;
+                        rdfs:domain flight_reviews:Review ,
+                                    flight_reviews:Verified ;
+                        rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#vip
+flight_reviews:vip rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#worker
+flight_reviews:worker rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft
+flight_reviews:Aircraft rdf:type owl:Class ;
+                        rdfs:subClassOf flight_reviews:Aircraft_Data ;
+                        rdfs:comment "The type of aircraft used in the flight." ;
+                        rdfs:label "Aircraft Type" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft_Data
+flight_reviews:Aircraft_Data rdf:type owl:Class ;
+                             rdfs:subClassOf flight_reviews:Flight_Review ;
+                             rdfs:comment "Airline company and aircraft" ;
+                             rdfs:label "Aircraft Data" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Airline
+flight_reviews:Airline rdf:type owl:Class ;
+                       rdfs:subClassOf flight_reviews:Aircraft_Data ;
+                       rdfs:comment "Airline company" ;
+                       rdfs:label "Airline" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Business
+flight_reviews:Business rdf:type owl:Class ;
+                        rdfs:subClassOf flight_reviews:Traveller_Type ;
+                        owl:disjointWith flight_reviews:Couple_Leisure ,
+                                         flight_reviews:Family_Leisure ,
+                                         flight_reviews:Solo_Leisure ;
+                        rdfs:comment "Traveler type Business" ;
+                        rdfs:label "Business" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Business_Class
+flight_reviews:Business_Class rdf:type owl:Class ;
+                              rdfs:subClassOf flight_reviews:Seat_Type ;
+                              owl:disjointWith flight_reviews:Economy_Class ,
+                                               flight_reviews:First_Class ;
+                              rdfs:comment "Seat type business class" ;
+                              rdfs:label "Business Class" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Comment
+flight_reviews:Comment rdf:type owl:Class ;
+                       rdfs:subClassOf flight_reviews:Review ;
+                       rdfs:comment "The content of the passenger’s comment." ;
+                       rdfs:label "Comment Content" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Comment_Title
+flight_reviews:Comment_Title rdf:type owl:Class ;
+                             rdfs:subClassOf flight_reviews:Review ;
+                             rdfs:comment "The title of the comment." ;
+                             rdfs:label "Comment Title" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Country
+flight_reviews:Country rdf:type owl:Class ;
+                       rdfs:subClassOf flight_reviews:Passenger ;
+                       rdfs:comment "The country of the reviewing passenger." ;
+                       rdfs:label "Passenger Country" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Couple_Leisure
+flight_reviews:Couple_Leisure rdf:type owl:Class ;
+                              rdfs:subClassOf flight_reviews:Traveller_Type ;
+                              owl:disjointWith flight_reviews:Family_Leisure ,
+                                               flight_reviews:Solo_Leisure ;
+                              rdfs:comment "Traveler type Couple Leisure" ;
+                              rdfs:label "Couple Leisure" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Data_Plublished
+flight_reviews:Data_Plublished rdf:type owl:Class ;
+                               rdfs:subClassOf flight_reviews:Review ;
+                               rdfs:comment "The date when the review was published." ;
+                               rdfs:label "Date Published" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Date_Flown
+flight_reviews:Date_Flown rdf:type owl:Class ;
+                          rdfs:subClassOf flight_reviews:Flight_Data ;
+                          rdfs:comment "The date when the flight took place." ;
+                          rdfs:label "Date Flown" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Destination
+flight_reviews:Destination rdf:type owl:Class ;
+                           rdfs:subClassOf flight_reviews:Flight_Data ;
+                           rdfs:comment "The flight destination city." ;
+                           rdfs:label "City of Destination" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Economy_Class
+flight_reviews:Economy_Class rdf:type owl:Class ;
+                             rdfs:subClassOf flight_reviews:Seat_Type ;
+                             owl:disjointWith flight_reviews:First_Class ;
+                             rdfs:comment "Seat type economy class" ;
+                             rdfs:label "Economy Class" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Family_Leisure
+flight_reviews:Family_Leisure rdf:type owl:Class ;
+                              rdfs:subClassOf flight_reviews:Traveller_Type ;
+                              owl:disjointWith flight_reviews:Solo_Leisure ;
+                              rdfs:comment "Traveler type Family Leisure" ;
+                              rdfs:label "Family Leisure" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#First_Class
+flight_reviews:First_Class rdf:type owl:Class ;
+                           rdfs:subClassOf flight_reviews:Seat_Type ;
+                           rdfs:comment "Seat type first class" ;
+                           rdfs:label "First Class" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_Data
+flight_reviews:Flight_Data rdf:type owl:Class ;
+                           rdfs:subClassOf flight_reviews:Flight_Review ;
+                           rdfs:comment "Flight details with date and origin and destination details" ;
+                           rdfs:label "Flight Data" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_Review
+flight_reviews:Flight_Review rdf:type owl:Class ;
+                             rdfs:comment "Flight reviews done by passengers" ;
+                             rdfs:label "Flight Review" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Origing
+flight_reviews:Origing rdf:type owl:Class ;
+                       rdfs:subClassOf flight_reviews:Flight_Data ;
+                       rdfs:comment "The city of origin of the flight." ;
+                       rdfs:label "City of Origin" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Overal_Rating
+flight_reviews:Overal_Rating rdf:type owl:Class ;
+                             rdfs:subClassOf flight_reviews:Review ;
+                             rdfs:comment "The overall rating given by the passenger." ;
+                             rdfs:label "Overall Rating" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Passenger
+flight_reviews:Passenger rdf:type owl:Class ;
+                         rdfs:subClassOf flight_reviews:Flight_Review ;
+                         rdfs:comment "Passenger details with country, seat type and passenger class." ;
+                         rdfs:label "Passenger" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Qatar_Airways
+flight_reviews:Qatar_Airways rdf:type owl:Class ;
+                             rdfs:subClassOf flight_reviews:Airline ;
+                             owl:disjointWith flight_reviews:Ryanair ;
+                             rdfs:comment "Qatar Airways airline" ;
+                             rdfs:label "Qatar Airways" ;
+                             rdfs:sameAs "https://dbpedia.org/page/Qatar_Airways"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Recommended
+flight_reviews:Recommended rdf:type owl:Class ;
+                           rdfs:subClassOf flight_reviews:Review ;
+                           rdfs:comment "Indicates whether the passenger recommends the flight." ;
+                           rdfs:label "Recommended" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Review
+flight_reviews:Review rdf:type owl:Class ;
+                      rdfs:subClassOf flight_reviews:Flight_Review ;
+                      rdfs:comment "Represents a passenger’s review of a flight." ;
+                      rdfs:label "Passenger Review" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Ryanair
+flight_reviews:Ryanair rdf:type owl:Class ;
+                       rdfs:subClassOf flight_reviews:Airline ;
+                       rdfs:comment "Ryanair airline" ;
+                       rdfs:label "Ryanair" ;
+                       rdfs:sameAs "https://dbpedia.org/page/Ryanair"^^xsd:anyURI .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Seat_Type
+flight_reviews:Seat_Type rdf:type owl:Class ;
+                         rdfs:subClassOf flight_reviews:Passenger ;
+                         rdfs:comment "The type of seat used by the passenger: Economy Class, Business Class, First Class ." ;
+                         rdfs:label "Seat Type" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Solo_Leisure
+flight_reviews:Solo_Leisure rdf:type owl:Class ;
+                            rdfs:subClassOf flight_reviews:Traveller_Type ;
+                            rdfs:comment "Traveler type Solo Leisure" ;
+                            rdfs:label "Solo Leisure" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Traveller_Type
+flight_reviews:Traveller_Type rdf:type owl:Class ;
+                              rdfs:subClassOf flight_reviews:Passenger ;
+                              rdfs:comment "Indicates whether the passenger is a business traveler, solo Leisure, couple Leisure or family Leisure" ;
+                              rdfs:label "Type of Traveller" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Verified
+flight_reviews:Verified rdf:type owl:Class ;
+                        rdfs:subClassOf flight_reviews:Review ;
+                        rdfs:comment "Indicates whether the trip was verified or not." ;
+                        rdfs:label "Trip Verified" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Very_Bad_Flight
+flight_reviews:Very_Bad_Flight rdf:type owl:Class ;
+                               rdfs:subClassOf flight_reviews:Overal_Rating ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty flight_reviews:rating ;
+                                                 owl:maxQualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                                                 owl:onDataRange xsd:int
+                                               ] ;
+                               owl:hasKey ( flight_reviews:rating
+                                          ) ;
+                               rdfs:comment "It is a flight with a rating lower than 3" ;
+                               rdfs:label "Very Bad Flight" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Very_Good_Flight
+flight_reviews:Very_Good_Flight rdf:type owl:Class ;
+                                rdfs:subClassOf flight_reviews:Overal_Rating ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty flight_reviews:rating ;
+                                                  owl:minQualifiedCardinality "8"^^xsd:nonNegativeInteger ;
+                                                  owl:onDataRange xsd:int
+                                                ] ;
+                                owl:hasKey ( flight_reviews:rating
+                                           ) ;
+                                rdfs:comment "It is a flight with a rating greater than 8" ;
+                                rdfs:label "Very Good Flight" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft_A10
+flight_reviews:Aircraft_A10 rdf:type owl:NamedIndividual ,
+                                     flight_reviews:Aircraft_Data ,
+                                     flight_reviews:Ryanair ;
+                            flight_reviews:aircraftType "Boeing 737 Max" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft_A11
+flight_reviews:Aircraft_A11 rdf:type owl:NamedIndividual ,
+                                     flight_reviews:Aircraft_Data ,
+                                     flight_reviews:Ryanair ;
+                            flight_reviews:aircraftType "N/A" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft_A12
+flight_reviews:Aircraft_A12 rdf:type owl:NamedIndividual ,
+                                     flight_reviews:Aircraft_Data ,
+                                     flight_reviews:Ryanair ;
+                            flight_reviews:aircraftType "Boeing 737-800" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft_Q47
+flight_reviews:Aircraft_Q47 rdf:type owl:NamedIndividual ,
+                                     flight_reviews:Aircraft_Data ,
+                                     flight_reviews:Qatar_Airways ;
+                            flight_reviews:aircraftType "Boeing 787" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Aircraft_Q48
+flight_reviews:Aircraft_Q48 rdf:type owl:NamedIndividual ,
+                                     flight_reviews:Aircraft_Data ,
+                                     flight_reviews:Qatar_Airways ;
+                            flight_reviews:aircraftType "A380 / Boeing 787" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Eval_A10
+flight_reviews:Eval_A10 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Review ;
+                        flight_reviews:commentContent "Krakow to Tirana with Ryanair's subsidiary, Buzz, on a brand new Boeing 737Max-200. Flight departed early and arrived before schedule. Crew extremely well presented and professional. Ryanair does not have the most comfortable seats, and leg room is not the best, however for a 1 hour 25 minute flight I do not have much complaints. If you follow their baggage rules and basic online check-in, you won't have any issues. While they are the low cost airline I fly least in comparison to WizzAir/easyJet, I would willingly fly them again if given the opportunity." ;
+                        flight_reviews:commentTitle "“Crew extremely well presented”" ;
+                        flight_reviews:datePublished "2023-12-06T00:00:00"^^xsd:dateTime ;
+                        flight_reviews:rating 8 ;
+                        flight_reviews:recomended "true"^^xsd:boolean ;
+                        flight_reviews:verified "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Eval_A11
+flight_reviews:Eval_A11 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Review ;
+                        flight_reviews:commentContent "This airline charges you for almost every thing. Every child needs to be seated with an adult. Got it, it is for Safety. But you must pay for the seat selection of the accompanying adult so that you can choose the seat next to the child. Only allowed a bag pack to be carried on for free, ay other cabin bag you must pay. You pay if you don’t check in online. It’s €55 to check in at the airport. That’s more than twice of my ticket price. No room for any negotiation. By the way, even if the flight is delayed and you have time to do online check in for free, too bad, just pay.  They insisted that we have an email to inform us of this. Too bad if you ignored the email." ;
+                        flight_reviews:commentTitle "\"pay if you don’t check in online\"" ;
+                        flight_reviews:datePublished "2023-12-04T00:00:00"^^xsd:dateTime ;
+                        flight_reviews:rating "1"^^xsd:int ;
+                        flight_reviews:recomended "false"^^xsd:boolean ;
+                        flight_reviews:verified "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Eval_A12
+flight_reviews:Eval_A12 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Review ;
+                        flight_reviews:commentContent "At least 5 passengers denied boarding in Lisbon due to overbooking. In London Stansted the plane was 1:30 minutes late due to what seemed to be defrosting." ;
+                        flight_reviews:commentTitle "“At least 5 passengers denied boarding”" ;
+                        flight_reviews:datePublished "2023-12-04T00:00:00"^^xsd:dateTime ;
+                        flight_reviews:rating "3"^^xsd:int ;
+                        flight_reviews:recomended "false"^^xsd:boolean ;
+                        flight_reviews:verified "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Eval_Q47
+flight_reviews:Eval_Q47 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Review ;
+                        flight_reviews:commentContent "This has been my first flight on Qatar in Y class since the onset of the pandemic and it was a huge disappointment. The catering was among the worst I had in a long time. They were not even half way through the cabin, when only one choice of meal was available. The minced beef with mashed potatoes were poor in taste and presentation. Bread rolls were  replaced by corn bread. No butter provided. The service was very slow and finally ended 3.5h after takeoff. The seats were narrow and uncomfortable. Considering the price I’ve paid, and what I got in return, I will not fly Qatar again until it returns to its old standards of service and catering." ;
+                        flight_reviews:commentTitle "\"seats were narrow and uncomfortable\"" ;
+                        flight_reviews:datePublished "2023-11-11T00:00:00"^^xsd:dateTime ;
+                        flight_reviews:rating "2"^^xsd:int ;
+                        flight_reviews:recomended "false"^^xsd:boolean ;
+                        flight_reviews:verified "true"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Eval_Q48
+flight_reviews:Eval_Q48 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Review ;
+                        flight_reviews:commentContent "I find Qatar Airways to be my favorite airline at the moment. The whole experience from booking to traveling, to end destination is very professional and easy. I had to make changes to my return journey, so I called Qatar (after hours my time), my call was answered straight away, the lady said that she could make change for me (AUD $60) or alternatively I could do it myself online (AUD $11). I chose to change myself online, very easy. As for my flight this week, PER-DOH-LYS, it was great, even though it was in economy, the food was much better that other airlines flown recently. I'll definitely be choosing Qatar where ever possible in the future." ;
+                        flight_reviews:commentTitle "\"my favorite airline at the moment\"" ;
+                        flight_reviews:datePublished "2023-11-07T00:00:00"^^xsd:dateTime ;
+                        flight_reviews:rating "10"^^xsd:int ;
+                        flight_reviews:recomended "true"^^xsd:boolean ;
+                        flight_reviews:verified "false"^^xsd:boolean .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_A10
+flight_reviews:Flight_A10 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Data ;
+                          flight_reviews:dateFlown "December 2023" ;
+                          flight_reviews:destination "Tirana" ;
+                          flight_reviews:origin "Krakow" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_A11
+flight_reviews:Flight_A11 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Data ;
+                          flight_reviews:dateFlown "December 2023" ;
+                          flight_reviews:destination "Barcelona" ;
+                          flight_reviews:origin "Porto" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_A12
+flight_reviews:Flight_A12 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Data ;
+                          flight_reviews:dateFlown "December 2023" ;
+                          flight_reviews:destination "Tirana via Stansted London" ;
+                          flight_reviews:origin "Lisbon" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_Q47
+flight_reviews:Flight_Q47 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Data ;
+                          flight_reviews:dateFlown "November 2023" ;
+                          flight_reviews:destination "Doha" ;
+                          flight_reviews:origin "Brussels" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Flight_Q48
+flight_reviews:Flight_Q48 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Data ;
+                          flight_reviews:dateFlown "November 2023" ;
+                          flight_reviews:destination "Lyon via Doha" ;
+                          flight_reviews:origin "Perth" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Pass_A10
+flight_reviews:Pass_A10 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Business ,
+                                 flight_reviews:Economy_Class ,
+                                 flight_reviews:Passenger ;
+                        flight_reviews:passengerCountry "Albania" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Pass_A11
+flight_reviews:Pass_A11 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Economy_Class ,
+                                 flight_reviews:Family_Leisure ,
+                                 flight_reviews:Passenger ;
+                        flight_reviews:passengerCountry "Singapore" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Pass_A12
+flight_reviews:Pass_A12 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Economy_Class ,
+                                 flight_reviews:Passenger ,
+                                 flight_reviews:Solo_Leisure ;
+                        flight_reviews:passengerCountry "Portugal" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Pass_Q47
+flight_reviews:Pass_Q47 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Economy_Class ,
+                                 flight_reviews:Passenger ,
+                                 flight_reviews:Solo_Leisure ;
+                        flight_reviews:passengerCountry "Belgium" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Pass_Q48
+flight_reviews:Pass_Q48 rdf:type owl:NamedIndividual ,
+                                 flight_reviews:Economy_Class ,
+                                 flight_reviews:Passenger ,
+                                 flight_reviews:Solo_Leisure ;
+                        flight_reviews:passengerCountry "Australia" .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Review_A10
+flight_reviews:Review_A10 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Review ;
+                          flight_reviews:hasAircraft flight_reviews:Aircraft_A10 ;
+                          flight_reviews:hasFlightData flight_reviews:Flight_A10 ;
+                          flight_reviews:hasPassenger flight_reviews:Pass_A10 ;
+                          flight_reviews:hasPassengerReview flight_reviews:Eval_A10 .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Review_A11
+flight_reviews:Review_A11 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Review ;
+                          flight_reviews:hasAircraft flight_reviews:Aircraft_A11 ;
+                          flight_reviews:hasFlightData flight_reviews:Flight_A11 ;
+                          flight_reviews:hasPassenger flight_reviews:Pass_A11 ;
+                          flight_reviews:hasPassengerReview flight_reviews:Eval_A11 .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Review_A12
+flight_reviews:Review_A12 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Review ;
+                          flight_reviews:hasAircraft flight_reviews:Aircraft_A12 ;
+                          flight_reviews:hasFlightData flight_reviews:Flight_A12 ;
+                          flight_reviews:hasPassenger flight_reviews:Pass_A12 ;
+                          flight_reviews:hasPassengerReview flight_reviews:Eval_A12 .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Review_Q47
+flight_reviews:Review_Q47 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Review ;
+                          flight_reviews:hasAircraft flight_reviews:Aircraft_Q47 ;
+                          flight_reviews:hasFlightData flight_reviews:Flight_Q47 ;
+                          flight_reviews:hasPassenger flight_reviews:Pass_Q47 ;
+                          flight_reviews:hasPassengerReview flight_reviews:Eval_Q47 .
+
+
+###  http://www.semanticweb.org/utilizador/ontologies/2024/3/flight_reviews#Review_Q48
+flight_reviews:Review_Q48 rdf:type owl:NamedIndividual ,
+                                   flight_reviews:Flight_Review ;
+                          flight_reviews:hasAircraft flight_reviews:Aircraft_Q48 ;
+                          flight_reviews:hasFlightData flight_reviews:Flight_Q48 ;
+                          flight_reviews:hasPassenger flight_reviews:Pass_Q48 ;
+                          flight_reviews:hasPassengerReview flight_reviews:Eval_Q48 .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+<urn:swrl:var#b> rdf:type swrl:Variable .
+
+<urn:swrl:var#e> rdf:type swrl:Variable .
+
+<urn:swrl:var#s> rdf:type swrl:Variable .
+
+<urn:swrl:var#f> rdf:type swrl:Variable .
+
+<urn:swrl:var#t> rdf:type swrl:Variable .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate flight_reviews:Solo_Leisure ;
+                           swrl:argument1 <urn:swrl:var#s>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate flight_reviews:First_Class ;
+                                      swrl:argument1 <urn:swrl:var#f>
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate flight_reviews:vip ;
+                           swrl:argument1 <urn:swrl:var#s> ;
+                           swrl:argument2 <urn:swrl:var#f>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate flight_reviews:Verified ;
+                           swrl:argument1 <urn:swrl:var#t>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                      swrl:builtin swrlb:equal ;
+                                      swrl:arguments [ rdf:type rdf:List ;
+                                                       rdf:first <urn:swrl:var#t> ;
+                                                       rdf:rest [ rdf:type rdf:List ;
+                                                                  rdf:first "true"^^xsd:boolean ;
+                                                                  rdf:rest rdf:nil
+                                                                ]
+                                                     ]
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate flight_reviews:reliable ;
+                           swrl:argument1 <urn:swrl:var#t> ;
+                           swrl:argument2 "true"^^xsd:boolean
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate flight_reviews:Business ;
+                           swrl:argument1 <urn:swrl:var#b>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:ClassAtom ;
+                                      swrl:classPredicate flight_reviews:Economy_Class ;
+                                      swrl:argument1 <urn:swrl:var#e>
+                                    ] ;
+                          rdf:rest rdf:nil
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                           swrl:propertyPredicate flight_reviews:worker ;
+                           swrl:argument1 <urn:swrl:var#b> ;
+                           swrl:argument2 <urn:swrl:var#e>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
