@@ -1,0 +1,35 @@
+digraph ar2dtool_diagram { 
+rankdir=LR;
+size="1000"
+node [shape = rectangle, color="black"]; "flight_reviews:Seat_Type" "flight_reviews:Overal_Rating" "flight_reviews:Business" "flight_reviews:Aircraft_Data" "flight_reviews:Couple_Leisure" "flight_reviews:Very_Good_Flight" "flight_reviews:Review" "flight_reviews:Ryanair" "flight_reviews:Flight_Review" "flight_reviews:Economy_Class" "flight_reviews:Data_Plublished" "flight_reviews:Country" "flight_reviews:Comment" "flight_reviews:Family_Leisure" "flight_reviews:Flight_Data" "flight_reviews:Airline" "flight_reviews:Date_Flown" "flight_reviews:Solo_Leisure" "flight_reviews:First_Class" "flight_reviews:Verified" "flight_reviews:Origing" "flight_reviews:Business_Class" "flight_reviews:Very_Bad_Flight" "flight_reviews:Comment_Title" "flight_reviews:Traveller_Type" "flight_reviews:Recommended" "flight_reviews:Destination" "flight_reviews:Passenger" "flight_reviews:Qatar_Airways" "flight_reviews:Aircraft" ; /*classes style*/
+	"flight_reviews:First_Class" -> "flight_reviews:Seat_Type" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Seat_Type" -> "flight_reviews:Passenger" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Destination" -> "flight_reviews:Flight_Data" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Aircraft_Data" -> "flight_reviews:Flight_Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Overal_Rating" -> "flight_reviews:Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Business" -> "flight_reviews:Traveller_Type" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Business_Class" -> "flight_reviews:Seat_Type" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Family_Leisure" -> "flight_reviews:Traveller_Type" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Traveller_Type" -> "flight_reviews:Passenger" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Solo_Leisure" -> "flight_reviews:Traveller_Type" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Ryanair" -> "flight_reviews:Airline" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Origing" -> "flight_reviews:Flight_Data" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Economy_Class" -> "flight_reviews:Seat_Type" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Country" -> "flight_reviews:Passenger" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Passenger" -> "flight_reviews:Flight_Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Date_Flown" -> "flight_reviews:Flight_Data" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Airline" -> "flight_reviews:Aircraft_Data" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Very_Good_Flight" -> "flight_reviews:Overal_Rating" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Recommended" -> "flight_reviews:Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Aircraft" -> "flight_reviews:Aircraft_Data" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Review" -> "flight_reviews:Flight_Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Qatar_Airways" -> "flight_reviews:Airline" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Couple_Leisure" -> "flight_reviews:Traveller_Type" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Comment" -> "flight_reviews:Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Comment_Title" -> "flight_reviews:Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Data_Plublished" -> "flight_reviews:Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Very_Bad_Flight" -> "flight_reviews:Overal_Rating" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Flight_Data" -> "flight_reviews:Flight_Review" [ label = "rdfs:subClassOf" ];
+	"flight_reviews:Verified" -> "flight_reviews:Review" [ label = "rdfs:subClassOf" ];
+
+}
